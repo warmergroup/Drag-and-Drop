@@ -4,7 +4,7 @@
       <h1 class="text-white text-center bg-stone-700 w-full rounded-sm my-1">{{ block.title }}</h1>
     </div>
     <div class="content">
-      <component :is="block.component" v-bind="block.props" />
+      <component :is="components[block.component]" v-bind="block.props" />
     </div>
   </div>
 </template>
@@ -12,6 +12,14 @@
 <script setup>
 import { defineProps } from "vue";
 import LineChart from "./Charts/LineChart.vue";
+import SparkLineChart from "./Charts/SparkLineChart.vue";
+import BarChart from "./Charts/BarChart.vue";
+
+const components = {
+  LineChart,
+  SparkLineChart,
+  BarChart,
+};
 defineProps({ block: Object });
 
 </script>
