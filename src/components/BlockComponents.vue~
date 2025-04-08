@@ -1,0 +1,31 @@
+<template>
+  <div class="block" v-bind:style="{ width: width + 'px', height: height + 'px' }">
+    <vue-resizable :w.sync="width" :h.sync="height" class="resizable">
+      <slot></slot>
+    </vue-resizable>
+  </div>
+</template>
+
+<script>
+import VueResizable from 'vue-resizable';
+
+export default {
+  name: "BlockComponent",
+  components: { VueResizable },
+  props: ["width", "height"],
+  data() {
+    return {
+      // blokning boshlang‘ich kattaligi
+      width: 200,
+      height: 150,
+    };
+  },
+};
+</script>
+
+<style>
+.block {
+  border: 1px solid #ccc;
+  position: absolute;
+}
+</style>
